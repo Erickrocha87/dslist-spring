@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.devsuperior.dslist.dto.GameDto;
 import com.devsuperior.dslist.dto.GameMinDto;
 
 import com.devsuperior.dslist.services.GameService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 // o controlador implementa api "a interface do backend "
 
@@ -25,5 +29,13 @@ public class GameController {
         List<GameMinDto> result = gameService.findAll();
         return result;
     }
+
+    @GetMapping(value = "/{id}")
+    public GameDto findById(@PathVariable Long id){ //garante que o id vai ser o correto
+        GameDto result = gameService.findById(id);
+        return result;
+    }
+    
+    
 
 }
