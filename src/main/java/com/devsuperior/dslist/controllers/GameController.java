@@ -33,9 +33,7 @@ public class GameController {
     @GetMapping(value = "/{id}")
     public GameDto findById(@PathVariable Long id){ //garante que o id vai ser o correto
         GameDto result = gameService.findById(id);
-        return result;
+       return result;
     }
-    
-    
 
 }

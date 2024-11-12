@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devsuperior.dslist.dto.GameDto;
 import com.devsuperior.dslist.dto.GameMinDto;
 import com.devsuperior.dslist.entities.Game;
+import com.devsuperior.dslist.projection.GameMinProjection;
 import com.devsuperior.dslist.repositories.GameRepository;
 
 @Service //registrando como um componente do sistema
@@ -31,4 +32,11 @@ public class GameService {
         return dto; //ou podemos retornar direto com o stream
     }
 
+    @Transactional(readOnly = true)
+    public List<GameMinDto> findByList(Long listId){
+        List<GameMinProjection
+        > result = gameRepository.searchByList(listId);  //o framework tem os métodos de acessos a dados/ pode ser usado var ou list
+        return result.stream().map(x -> new GameMinDto(x)).toList(); //usando steam para acessar a lista result to tipo game e trocar para game dto
+        
+    }
 }
