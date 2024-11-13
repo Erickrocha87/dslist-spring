@@ -12,9 +12,6 @@ import com.devsuperior.dslist.dto.GameDto;
 import com.devsuperior.dslist.dto.GameMinDto;
 
 import com.devsuperior.dslist.services.GameService;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 // o controlador implementa api "a interface do backend "
 
 @RestController //registrando como um componente do sistema
